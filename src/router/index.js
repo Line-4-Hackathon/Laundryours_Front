@@ -1,15 +1,39 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import map from '../views/dmap.vue'
+import board from '../views/board.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
+
   {
-    path: '/',
-    name: 'Home',
-    component: Home
-  },
+    path:'/',
+    component:()=>import('../App.vue'),
+    children:[
+      {
+        path: '/',
+        name: 'Home',
+        component: Home
+      },
+      {
+        path: '/home',
+        name: 'Home',
+        component: Home
+      },
+      {
+        path: '/dmap',
+        name: 'dmap',
+        component: map
+      },
+      {
+        path: '/board',
+        name: 'board',
+        component: board
+      },
+    ]
+  }
   // {
   //   path: '/about',
   //   name: 'About',
